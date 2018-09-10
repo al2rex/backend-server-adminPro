@@ -42,7 +42,7 @@ app.post('/google', async(req, res, next) => {
             });
         })
 
-    Usuario.findOne({ email: googleUser.email }, (err, usuarioDB) => {
+    Usuario.findOne({ email: googleUser.email }, (err, UsuarioBD) => {
         if (err) {
             return res.status(500).json({
                 ok: true,
@@ -50,8 +50,8 @@ app.post('/google', async(req, res, next) => {
                 googleUser: googleUser
             });
         }
-        if (usuarioDB) {
-            if (usuarioDB.google === false) {
+        if (UsuarioBD) {
+            if (UsuarioBD.google === false) {
                 return res.status(500).json({
                     ok: false,
                     mensaje: 'Debe de usar su atenticacion normal',
